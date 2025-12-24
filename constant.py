@@ -1,5 +1,7 @@
-
+# Model defining
 MODEL_ID = "gemini-3-flash-preview"
+
+# Default config if not given custom
 DEFAULT_PARAMS = {
     "temperature": 0.7,
     "top_p": 0.9,
@@ -7,6 +9,7 @@ DEFAULT_PARAMS = {
     "max_tokens": 1000
 }
 
+# Custom config
 config_settings = [
         {"temperature": 0.2, "top_p": 0.9, "top_k":20, "max_tokens": 1000},
         # {"temperature": 0.7, "top_p": 0.9, "top_k":30, "max_tokens": 150},
