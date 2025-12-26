@@ -23,5 +23,5 @@ def experiments(custom_config:dict) -> None:
     """
     # for getting every custom config
     for cs in custom_config:
-        output = generate_text(consistency_prompt, **cs)
+        output = generate_text(role_prompt, **cs)
         print(f"Param:{cs}\nOutput:\n{output}")

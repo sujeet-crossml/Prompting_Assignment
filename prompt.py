@@ -1,30 +1,30 @@
 # few shot prompting
 fewshot_prompt ='''
-sentiment = 'This movie is very bad'
+Sentiment = 'This movie is very bad.'
 
-Give me some sentimetal analysis for sentiment
-take few examples:
-        1. 'i hate comedy' : Negative
-        2. 'i love this comedy show' : Positive
-        3. ' this movie is okay' : Neutral
+Give me some sentimetal analysis for sentiment.
+Take few examples:
+        1. 'I hate comedy.' : Negative
+        2. 'I love this comedy show.' : Positive
+        3. 'This movie is okay.' : Neutral
 
-give me output in <sentiment>: <result>
-replace <sentiment> to original text and <result> to analysis result
+Output Format (follow exactly):
+<sentiment>: <result>
 '''
 # Role base prompting
 role_prompt= '''
-Role: Act as a 10 years of experienced movie analyst. You have done  over 10,00,000 of sentiments analyst.
+Role: 
+Act as a 10 years of experienced movie analyst. You have done  over 10,00,000 of sentiments analyst.
 
 Now According to your experience and number of analysis done, give me sentimental analysis of above:
-            sentiment = 'This movie is have good concept of story. 
-            But not the applied the better line of story for love and dialogues as other movies'
-            take few examples:
-                    1. 'i hate comedy' : Negative
-                    2. 'i love this comedy show' : Positive
-                    3. ' this movie is okay' : Neutral
+Sentiment = 'This movie is have good concept of story. But not the applied the better line of story for love and dialogues as other movies'
+        take few examples:
+                1. 'i hate comedy' : Negative
+                2. 'i love this comedy show' : Positive
+                3. ' this movie is okay' : Neutral
 
-            give me output in <sentiment>: <result>
-            replace <sentiment> to original text and <result> to analysis result
+Output Format (follow exactly):
+<sentiment>: <result>
 
 '''
 
@@ -99,8 +99,7 @@ Visuals & Emotions: <Positive | Negative | Neutral>
 Overall Sentiment: <Positive | Negative | Mixed>
 
 Review:
-"This cop movie about drugs is badly told. Bad screenplay.
-The premonition thing isn't properly integrated. It's confusing.
+"This cop movie about drugs is badly told. Bad screenplay. The premonition thing isn't properly integrated. It's confusing.
 Too bad the production and cast are good. Don't bother."
 '''
 
@@ -141,8 +140,7 @@ OUTPUT FORMAT (MANDATORY):
 
 
 Movie Review:
-"The movie had stunning visuals and a powerful soundtrack, but the story
-felt predictable and the pacing was painfully slow. By the end, I felt
+"The movie had stunning visuals and a powerful soundtrack, but the story felt predictable and the pacing was painfully slow. By the end, I felt
 disappointed despite the strong performances."
 
 '''
@@ -195,6 +193,6 @@ Self-Consistent Final Answer:
 Final sentiment:
 Reason for selection (1 sentence):
 
-REVIEW TO ANALYZE:
+Review:
 “The acting was powerful and emotionally convincing, but the screenplay was weak and the ending felt rushed.”
 '''
