@@ -1,13 +1,27 @@
 from util import generate_text
-from prompt import prompt1, prompt2, prompt3, prompt4, prompt5
+from prompt import fewshot_prompt, role_prompt, cot_prompt, tot_prompt, contextual_prompt, consistency_prompt
 
 # running experiments with different config values
 def experiments(custom_config:dict) -> None:
-    '''
-    This function is used for running different custom config.
-    Custom config should be in dictionary.
-    '''
+    """
+    Summary:
+        This function iterates over each configuration provided in
+        `custom_config`, passes the parameters to the `generate_text`
+        function, and prints the generated output along with the
+        corresponding configuration.
+
+    Args:
+        custom_config (dict):
+            A dictionary (or iterable of dictionaries) containing
+            keyword arguments for the `generate_text` function
+            such as temperature, top_p, top_k, and max_tokens.
+
+    Returns:
+        None:
+            The function does not return any value.
+            Results are printed directly to the console.
+    """
     # for getting every custom config
     for cs in custom_config:
-        output = generate_text(prompt5, **cs)
+        output = generate_text(consistency_prompt, **cs)
         print(f"Param:{cs}\nOutput:\n{output}")

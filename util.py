@@ -2,15 +2,24 @@ from google.genai import types
 
 from client import client
 from constant import MODEL_ID, DEFAULT_PARAMS
-from prompt import system_instruction
+from prompt import system_instruction, fewshot_prompt, role_prompt, cot_prompt, tot_prompt, contextual_prompt, consistency_prompt
 
 # Function for generating text
 def generate_text(prompt : str|None, temperature = float|None, top_p= float|None, top_k= float|None, max_tokens = int|None) -> str : 
-    '''
-    Generate_text function is used for generating text from a specific model and client.
-    This takes different parameter like prompt, temperature, top_p, top_k, and max_tokens. Only 'prompt' is compulsory.
-    This function returns text in string. 
-    '''
+    """
+    Summary:
+        Generate text from a language model using configurable generation parameters.
+
+    Args:
+        prompt (str | None): Input text prompt for generation (required).
+        temperature (float | None): Controls randomness of the output.
+        top_p (float | None): Nucleus sampling probability threshold.
+        top_k (float | None): Limits sampling to top-k probable tokens.
+        max_tokens (int | None): Maximum number of tokens in the generated output.
+
+    Returns:
+        str: Generated text response from the model.
+    """
     config = types.GenerateContentConfig(
         system_instruction= system_instruction,
         temperature=temperature if temperature is not None else DEFAULT_PARAMS.get("temperature"), # For randomness and creative response
