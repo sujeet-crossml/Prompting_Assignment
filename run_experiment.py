@@ -1,5 +1,5 @@
 from util import generate_text
-from prompt import fewshot_prompt, role_prompt, cot_prompt, tot_prompt, contextual_prompt, consistency_prompt
+from prompt import *
 
 # running experiments with different config values
 def experiments(custom_config:dict) -> None:

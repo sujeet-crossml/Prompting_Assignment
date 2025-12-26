@@ -2,7 +2,7 @@ from google.genai import types
 
 from client import client
 from constant import MODEL_ID, DEFAULT_PARAMS
-from prompt import system_instruction, fewshot_prompt, role_prompt, cot_prompt, tot_prompt, contextual_prompt, consistency_prompt
+from prompt import *
 
 # Function for generating text
 def generate_text(prompt : str|None, temperature = float|None, top_p= float|None, top_k= float|None, max_tokens = int|None) -> str : 
