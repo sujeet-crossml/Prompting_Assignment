@@ -1,6 +1,6 @@
 from run_experiment import experiments
-from constant import config_settings
+from constant import CONFIG_SETTINGS
 
 # Main for running workflow
 if __name__ == "__main__":
-    experiments(config_settings)
+    experiments(CONFIG_SETTINGS)

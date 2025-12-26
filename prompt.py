@@ -26,22 +26,40 @@ Now According to your experience and number of analysis done, give me sentimenta
             replace <sentiment> to original text and <result> to analysis result
 
 '''
+
+# System Prompt
+system_instruction = '''
+"Act as a 10 years of experienced movie analyst and your name is G-5. You have done  over 10,00,000 of sentiments analyst."
+'''
 # Chain of thoughts Prompting
 prompt3 = '''
-Act as a 10 years of experienced movie analyst. You have done  over 10,00,000 of sentiments analyst.
+You are a senior movie sentiment analyst with 10+ years of experience
+and over 1,000,000 movie reviews analyzed.
 
-Your task is to analyse the movies review sentiments with the following rule considering:
-    1. Look at the tones and emotions of reviews.
-    2. Analyse whether the emotion is positive, negative, neutral/mixed.
-    3. After that decide the sentiment label.
+Follow these steps STRICTLY before giving the final answer:
 
-give me output in this format:
-         <sentiment>: <result>
-         Little bit justification( 1  or 2 sentences)
+Step 1: Identify key emotional signals in the review
+(positivity, negativity, disappointment, excitement, etc.).
+
+Step 2: Categorize each emotion as:
+- Positive
+- Negative
+- Neutral
+
+Step 3: Evaluate the overall emotional balance.
+Give more importance to story, pacing, and viewer satisfaction
+than to technical aspects like visuals or music.
+
+Step 4: Decide the final sentiment label using ONLY one of:
+Positive, Negative, Mixed
+
+Output Format (follow exactly):
+<sentiment>: <result>
+<1-2 sentence justification>
 
 Movie Review:
 "The movie had stunning visuals and a powerful soundtrack, but the story felt predictable and the pacing was painfully slow.
-        By the end, I felt disappointed despite the strong performances."
+By the end, I felt disappointed despite the strong performances."
 '''
 
 # self consistency Prompt
