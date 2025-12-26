@@ -11,6 +11,7 @@ def generate_text(prompt : str, temperature = None, top_p= None, top_k= None, ma
     This function returns text in string. 
     '''
     config = types.GenerateContentConfig(
+        system_instruction= "Act as a 10 years of experienced movie analyst and your name is G-5. You have done  over 10,00,000 of sentiments analyst.",
         temperature=temperature if temperature is not None else DEFAULT_PARAMS["temperature"], # For randomness and creative response
         top_p=top_p if top_p is not None else DEFAULT_PARAMS["top_p"], # selects a fixed number of the most probable words
         top_k=top_k if top_k is not None else DEFAULT_PARAMS["top_k"], # selects the smallest set of words whose cumulative probability exceeds a threshold 
