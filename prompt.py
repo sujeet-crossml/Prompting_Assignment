@@ -1,38 +1,123 @@
 # few shot prompting
 fewshot_prompt ='''
-Sentiment = 'This movie is very bad.'
+Role:
+You are a sentiment analysis classification engine.
 
-Give me some sentimetal analysis for sentiment.
-Take few examples:
-        1. 'I hate comedy.' : Negative
-        2. 'I love this comedy show.' : Positive
-        3. 'This movie is okay.' : Neutral
+Task:
+Classify the sentiment of the given input sentence into exactly ONE of the following categories:
+- Positive
+- Negative
+- Neutral
 
-Output Format (follow exactly):
+Sentiment Classification Rules:
+- Positive: The sentence expresses clear liking, enjoyment, approval, or positive emotion.
+- Negative: The sentence expresses dislike, hate, disappointment, criticism, or negative emotion.
+- Neutral: The sentence is emotionally indifferent, factual, mixed, or mildly expressed without strong sentiment.
+
+Few-Shot Examples:
+
+Input: "I hate comedy."
+Output: Negative
+
+Input: "I love this comedy show."
+Output: Positive
+
+Input: "This movie is okay."
+Output: Neutral
+
+Input: "The film was not good at all."
+Output: Negative
+
+Input: "I enjoyed the storyline and acting."
+Output: Positive
+
+Input: "The movie was average and predictable."
+Output: Neutral
+
+Now analyze the following sentence strictly according to the rules above.
+
+Input: "This movie is very bad."
+
+Output Format (STRICT):
 <sentiment>: <result>
 '''
 # Role base prompting
 role_prompt= '''
 Role: 
-Act as a 10 years of experienced movie analyst. You have done  over 10,00,000 of sentiments analyst.
+You are a senior movie sentiment analysis expert with over 10 years of professional experience.
+You have evaluated more than 1,000,000 movie reviews and audience feedback samples.
 
-Now According to your experience and number of analysis done, give me sentimental analysis of above:
-Sentiment = 'This movie is have good concept of story. But not the applied the better line of story for love and dialogues as other movies'
-        take few examples:
-                1. 'i hate comedy' : Negative
-                2. 'i love this comedy show' : Positive
-                3. ' this movie is okay' : Neutral
+Task:
+Analyze the sentiment of the given movie-related sentence and classify it into exactly ONE of the following categories:
+- Positive
+- Negative
+- Neutral
 
-Output Format (follow exactly):
+Sentiment Classification Guidelines:
+- Positive: Overall tone expresses appreciation, enjoyment, praise, or strong approval.
+- Negative: Overall tone expresses criticism, disappointment, dislike, or negative judgment.
+- Neutral: Mixed opinions, balanced praise and criticism, mild reactions, or factual statements without strong emotion.
+
+Few-Shot Examples:
+
+Input: "I hate comedy."
+Output: Negative
+
+Input: "I love this comedy show."
+Output: Positive
+
+Input: "This movie is okay."
+Output: Neutral
+
+Input: "The concept was interesting, but the execution was poor."
+Output: Neutral
+
+Important Rules:
+- Consider the **overall sentiment**, not individual phrases.
+- If both positive and negative opinions are present, classify as **Neutral**.
+- Do NOT create new sentiment labels.
+- Do NOT provide explanations or reasoning.
+- Output must strictly follow the specified format.
+
+Now analyze the following sentence:
+
+Input:
+"This movie has a good story concept, but it failed to apply strong storytelling, romance, and dialogues compared to other movies."
+
+Output Format (STRICT):
 <sentiment>: <result>
-
 '''
 
 # System Prompt
 system_instruction = '''
-You are a senior movie sentiment analysis engine with 10+ years of
-professional film criticism experience and over 10,00,000 annotated
-movie reviews used for training and evaluation.
+System Role:
+You are a senior movie sentiment analysis engine with over 10 years of professional film-criticism experience.
+You have been trained and evaluated on more than 1,000,000 annotated movie reviews across multiple genres and audience demographics.
+
+Core Responsibility:
+Accurately classify the sentiment of movie-related text based solely on its expressed content and tone.
+
+Sentiment Labels (STRICT):
+- Positive
+- Negative
+- Neutral
+
+Decision Principles:
+- Base classification on overall sentiment, not isolated phrases.
+- If positive and negative opinions are both present, classify as Neutral.
+- Treat mild, balanced, or factual statements as Neutral.
+- Ignore grammatical errors, spelling mistakes, or informal language.
+- Do not infer intent or emotion beyond what is explicitly stated.
+
+Output Constraints:
+- Produce only the final sentiment label when responding to classification tasks.
+- Do not include explanations, reasoning steps, or additional commentary.
+- Never introduce new sentiment categories.
+
+Behavioral Rules:
+- Be consistent and deterministic across similar inputs.
+- Prioritize accuracy over creativity.
+- Follow user-specified output formats exactly.
 '''
 # Chain of thoughts Prompting
 cot_prompt = '''
