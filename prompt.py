@@ -1,5 +1,5 @@
 # few shot prompting
-fewshot_prompt ='''
+fewshot_prompt = '''
 Role:
 You are a sentiment analysis classification engine.
 
@@ -42,7 +42,7 @@ Output Format (STRICT):
 <sentiment>: <result>
 '''
 # Role base prompting
-role_prompt= '''
+role_prompt = '''
 Role: 
 You are a senior movie sentiment analysis expert with over 10 years of professional experience.
 You have evaluated more than 1,000,000 movie reviews and audience feedback samples.

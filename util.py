@@ -6,7 +6,7 @@ from constant import MODEL_ID, DEFAULT_PARAMS
 from prompt import *
 
 # Function for generating text
-def generate_text(prompt : str|None, temperature = float|None, top_p= float|None, top_k= float|None, max_tokens = int|None) -> str : 
+def generate_text(prompt : str|None, temperature = float|None, top_p = float|None, top_k = float|None, max_tokens = int|None) -> str : 
     """
     Summary:
         Generate text from a language model using configurable generation parameters.
@@ -22,17 +22,17 @@ def generate_text(prompt : str|None, temperature = float|None, top_p= float|None
         str: Generated text response from the model.
     """
     config = types.GenerateContentConfig(
-        system_instruction= system_instruction,
-        temperature=temperature if temperature is not None else DEFAULT_PARAMS.get("temperature"), # For randomness and creative response
-        top_p=top_p if top_p is not None else DEFAULT_PARAMS.get("top_p"), # selects a fixed number of the most probable words
-        top_k=top_k if top_k is not None else DEFAULT_PARAMS.get("top_k"), # selects the smallest set of words whose cumulative probability exceeds a threshold 
+        system_instruction = system_instruction,
+        temperature = temperature if temperature is not None else DEFAULT_PARAMS.get("temperature"), # For randomness and creative response
+        top_p = top_p if top_p is not None else DEFAULT_PARAMS.get("top_p"), # selects a fixed number of the most probable words
+        top_k = top_k if top_k is not None else DEFAULT_PARAMS.get("top_k"), # selects the smallest set of words whose cumulative probability exceeds a threshold 
         max_output_tokens=max_tokens if max_tokens is not None else DEFAULT_PARAMS.get("max_tokens"), # max output token allowed for the response get.
     )
     # creating response form client
     response = client.models.generate_content(
-        model=MODEL_ID,
+        model = MODEL_ID,
         contents = prompt,
-        config=config
+        config = config
     )
     return response.text
 
