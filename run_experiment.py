@@ -1,8 +1,8 @@
 from util import generate_text
-from prompt import *
+
 
 # running experiments with different config values
-def experiments(custom_config:dict) -> None:
+def experiments(prompt:str,custom_config:dict) -> None:
     """
     Summary:
         This function iterates over each configuration provided in
@@ -23,5 +23,5 @@ def experiments(custom_config:dict) -> None:
     """
     # for getting every custom config
     for cs in custom_config:
-        output = generate_text(role_prompt, **cs)
+        output = generate_text(prompt, **cs)
         print(f"Param:{cs}\nOutput:\n{output}")

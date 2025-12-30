@@ -35,3 +35,29 @@ def generate_text(prompt : str|None, temperature = float|None, top_p= float|None
         config=config
     )
     return response.text
+
+# special fuction for self consistency implement
+def self_consistency(prompt: str|list, runs: int = 4,) -> list:
+    """
+    Summary:
+        Generate multiple responses for the same prompt using self-consistency.
+
+    Args:
+        prompt (str | list): Input prompt(s) used for generation.
+        image: Image input for multimodal text generation.
+        runs (int): Number of generation runs to produce diverse outputs.
+
+    Returns:
+        list: A list of generated text outputs including the original prompt.
+    """
+    outputs = []
+    outputs.append(prompt)
+    # for running prompt multiple times
+    for _ in range(runs):
+        result = generate_text(
+            prompt = outputs,
+        )
+        if result:
+            outputs.insert(0, result)
+
+    return outputs

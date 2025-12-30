@@ -118,7 +118,7 @@ Behavioral Rules:
 - Be consistent and deterministic across similar inputs.
 - Prioritize accuracy over creativity.
 - Follow user-specified output formats exactly.
-'''
+'''  
 # Chain of thoughts Prompting
 cot_prompt = '''
 You are a senior movie sentiment analyst with 10+ years of experience and over 10,00,000 movie reviews analyzed.
